@@ -26,7 +26,10 @@
             {{range .Experience}}
             <div class="mb-6">
                 <h3 class="text-xl font-semibold text-gray-800">{{.Title}}</h3>
-                <p class="text-gray-600">{{.Company}} | {{.Location}} | {{.Period}}</p>
+                <p class="text-gray-600 flex justify-between">
+                <span>{{.Company}} , {{.Location}} </span>
+                <span class="text-right">{{.Period}}</span>
+            </p>
                 <ul class="list-disc ml-6 mt-2 text-gray-700">
                     {{range .Responsibilities}}
                     <li>{{.}}</li>
@@ -80,8 +83,10 @@
             {{range .Education}}
             <div class="mb-4">
                 <h3 class="text-xl font-semibold text-gray-800">{{.Degree}}</h3>
-                <p class="text-gray-600">{{.Institution}}, {{.Location}} | {{.Period}}</p>
-                <p class="text-gray-600">CGPA: {{.CGPA}}</p>
+                <p class="text-gray-600 flex justify-between">
+                    <span>{{.Institution}}, {{.Location}}</span>
+                    <span class="text-right">{{.Period}}</span>
+                </p>
             </div>
             {{end}}
         </section>
