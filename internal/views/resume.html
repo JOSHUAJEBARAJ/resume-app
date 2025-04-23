@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Name}} - Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans font-['Inter']">
+    <div class="max-w-4xl mx-auto bg-white shadow-lg p-8 my-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900">{{.Name}}</h1>
+            <div class="flex justify-center space-x-4 mt-4 text-blue-600">
+                <a href="{{.Contact.Website}}" target="_blank" class="hover:underline">Website</a>
+                <a href="{{.Contact.Linkedin}}" target="_blank" class="hover:underline">LinkedIn</a>
+                <a href="{{.Contact.Github}}" target="_blank" class="hover:underline">GitHub</a>
+                <a href="mailto:{{.Contact.Email}}" class="hover:underline">{{.Contact.Email}}</a>
+            </div>
+        </header>
+        {{if .Experience}}
+        <!-- Experience -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Experience</h2>
+            {{range .Experience}}
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold text-gray-800">{{.Title}}</h3>
+                <p class="text-gray-600">{{.Company}} | {{.Location}} | {{.Period}}</p>
+                <ul class="list-disc ml-6 mt-2 text-gray-700">
+                    {{range .Responsibilities}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+            {{end}}
+        </section>
+
+        {{end}}
+
+        {{if .Skills}}
+
+        <!-- Skills -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Programming Languages</h3>
+                    <ul class="list-disc ml-6 text-gray-700">
+                        {{range .Skills.ProgrammingLanguages}}
+                        <li>{{.}}</li>
+                        {{end}}
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Cloud Infrastructure</h3>
+                    <ul class="list-disc ml-6 text-gray-700">
+                        {{range .Skills.CloudInfrastructure}}
+                        <li>{{.}}</li>
+                        {{end}}
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Tools</h3>
+                    <ul class="list-disc ml-6 text-gray-700">
+                        {{range .Skills.Tools}}
+                        <li>{{.}}</li>
+                        {{end}}
+                    </ul>
+                </div>
+            </div>
+        </section>
+        {{end}}
+
+        {{if .Education}}
+
+        <!-- Education -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Education</h2>
+            {{range .Education}}
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold text-gray-800">{{.Degree}}</h3>
+                <p class="text-gray-600">{{.Institution}}, {{.Location}} | {{.Period}}</p>
+                <p class="text-gray-600">CGPA: {{.CGPA}}</p>
+            </div>
+            {{end}}
+        </section>
+
+        {{end}}
+
+        {{if .Projects}}
+
+        <!-- Projects -->
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">Projects</h2>
+            {{range .Projects}}
+            <div class="mb-4">
+                <h3 class="text-xl font-semibold text-gray-800">
+                    <a href="{{.Link}}" target="_blank" class="text-blue-600 hover:underline">{{.Name}}</a>
+                </h3>
+                <p class="text-gray-700">{{.Description}}</p>
+            </div>
+            {{end}}
+        </section>
+        {{end}}
+    </div>
+</body>
+</html>
